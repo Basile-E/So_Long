@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/11 11:19:23 by baecoliv         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:52:26 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../MinilibX/mlx.h" 
+#include "mlx_linux/mlx.h" 
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -75,7 +75,7 @@ int main(int ac, char **av)
     Y = 0;
     
     //data.img = mlx_png_file_to_image(); Mensonge !!!
-    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "/home/baecoliv/Documents/Common Core/So_Long/Textures/test/Water.xpm", &width, &height);
+    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "/home/basile/Documents/Common_Core/So_Long/test/Water.xpm", &width, &height);
     if (!data.img)
     {
         write(2, "erreur d'initialisation de l'image\n", 35);
@@ -84,17 +84,17 @@ int main(int ac, char **av)
     //mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 0);
     //mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 64);
 
-    
-    
+
     while(ctr > 0)
     {
         mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, X, Y);
         X = X + offset;
+	    ctr--;
     }
     
     mlx_hook(data.win_ptr, DestroyNotify, KeyPressMask, kill_win, &data);
     //mlx_hook(data.win_ptr, 2, 1L<<0, close, &data);
-    //mlx_key_hook(data.win_ptr, key_hook, &data);
+    mlx_key_hook(data.win_ptr, key_hook, &data);
     //mlx_hook(data.win_ptr, ON_DESTROY, 0, close, &data);
     mlx_loop(data.mlx_ptr);
     return 0;
