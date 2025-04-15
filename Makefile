@@ -8,6 +8,7 @@ CC 				= cc
 
 STANDARD_FLAGS 	= -Wall -Werror -Wextra
 MINILIBX_FLAGS	= -Lmlx_linux -lmlx -lXext -lX11
+GDB_FLAGS		= -g3
 
 VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
 --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
@@ -29,31 +30,23 @@ ${NAME}:
 				@echo "▓▓      ▓▓▓  ▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓"
 				@echo "███████  ██  ████  ████████  ████████  ████  ██  ██    ██  ████  █"
 				@echo "██      ████      █████████        ███      ███  ███   ███      ██"
-				@echo "$(GREEN)$(NAME) was compiled.$(RESET)"
+				@echo "						$(GREEN)....is now ready to run!$(RESET)"
 
 
 fclean:
-				${REMOVE} ${NAME} ${NAME_BONUS}
-				@echo "${NAME}: ${RED}${NAME} and ${NAME_BONUS} were deleted${RESET}"
-				@echo "░  ░░░░  ░░        ░░       ░░░░      ░░░        ░"                    
-				@echo "▒   ▒▒   ▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒"                    
-				@echo "▓        ▓▓      ▓▓▓▓       ▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓"                    
-				@echo "█  █  █  ██  ████████  ███  ███  ████  █████  ████"                    
-				@echo "█  ████  ██        ██  ████  ███      ███        █"                    
-				@echo "																	"
-				@echo "░       ░░░░      ░░░  ░░░░  ░░       ░░░░░░░░░  ░░░░░░░░        ░"    
-				@echo "▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒"    
-				@echo "▓       ▓▓▓  ▓▓▓▓  ▓▓  ▓▓▓▓  ▓▓       ▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓      ▓▓▓"    
-				@echo "█  ████████  ████  ██  ████  ██  ███  █████████  ████████  ███████"    
-				@echo "█  █████████      ████      ███  ████  ████████        ██        █"    
-				@echo "																		"
-				@echo "░       ░░░░      ░░░        ░░░      ░░░░      ░░░░      ░░░   ░░░  ░"
-				@echo "▒  ▒▒▒▒  ▒▒  ▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒"
-				@echo "▓       ▓▓▓  ▓▓▓▓  ▓▓▓▓▓  ▓▓▓▓▓▓      ▓▓▓▓      ▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓"
-				@echo "█  ████████  ████  █████  ███████████  ████████  ██  ████  ██  ██    █"
-				@echo "█  █████████      ███        ███      ████      ████      ███  ███   █"
-                                                                      
+				${REMOVE} ${NAME}
+				@echo "░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░"
+				@echo "▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒"
+				@echo "▓▓      ▓▓▓  ▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓"
+				@echo "███████  ██  ████  ████████  ████████  ████  ██  ██    ██  ████  █"
+				@echo "██      ████      █████████        ███      ███  ███   ███      ██"
+				@echo "						$(GREEN)....is now clean, See you soon!$(RESET)"
+
+
+gdb:			${NAME}
+				${CC} ${SRCSSTANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+				gdb ./${NAME}
 
 re:				fclean all
 
-.PHONY:			all clean fclean re rebonus valgrind run run_bonus
+.PHONY:			all clean fclean re rebonus valgrind run run_bonus 

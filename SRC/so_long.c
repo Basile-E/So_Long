@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/15 12:23:17 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/15 13:30:42 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@ typedef struct          s_mlx_data
     void    *img;
 }                       t_mlx_data;
 
-int key_hook(int keycode, t_mlx_data *data)
-{
-    printf("hello from Keyhook%i,\n", keycode);
-    if (keycode == 99)
-    {
-        //fonctionne pour kill la win mais seg fault 
-        //voir comment correctement free la mlx
-        mlx_destroy_display(data->win_ptr);
-        free(data->mlx_ptr);// le seg fault viens probablement de la
-    }
-    
-    return (0);
-}
 
 int kill_win(t_mlx_data *data)
 {
@@ -46,6 +33,19 @@ int kill_win(t_mlx_data *data)
     exit(0);
     return 0;
 }
+
+
+
+int handle_imput(int keycode, t_mlx_data *data)
+{
+    printf("hello from Keyhook%i,\n", keycode);
+    if (keycode == 99)
+        kill_win(data);
+    return (0);
+}
+
+
+
 
 int main(void)
 {
@@ -75,7 +75,7 @@ int main(void)
     Y = 0;
     
     //data.img = mlx_png_file_to_image(); Mensonge !!!
-    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "test/Water.xpmw", &width, &height);
+    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "test/Water.xpm", &width, &height);
     if (!data.img)
     {
         write(2, "erreur d'initialisation de l'image\n", 35);
@@ -94,7 +94,7 @@ int main(void)
     
     mlx_hook(data.win_ptr, DestroyNotify, KeyPressMask, kill_win, &data);
     //mlx_hook(data.win_ptr, 2, 1L<<0, close, &data);
-    mlx_key_hook(data.win_ptr, key_hook, &data);
+    mlx_key_hook(data.win_ptr, handle_imput, &data);
     //mlx_hook(data.win_ptr, ON_DESTROY, 0, close, &data);
     mlx_loop(data.mlx_ptr);
     return 0;
