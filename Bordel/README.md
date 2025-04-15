@@ -1,9 +1,10 @@
 # So-Long
 
 # To-Do #
+
 [  ]    faire les fonctions de creation des sprites en partant d'un tableau
 
-[  ]    Les envoyé a la fenetre tout les x fois par seconde (on peut choisire ?)
+[  ]    si possible : faire la fonction qui envoie les sprites a la fenetre tout les x fois par seconde (on peut choisire ?)
 
 [  ]    faire la fonction de parsing de map pour en faire un tableau
 
@@ -11,7 +12,9 @@
 
 [  ]    faire une fonction qui lie un keyhook type "w" a une fonction qui modifie la map pour monter le joueur d'une case
 
-[  ]    trouver des textures qui ont pas les bords chelou, ou comprendre comment m'en servirz
+[  ]    trouver des textures qui ont pas les bords chelou, ou comprendre comment m'en servir
+
+
 
 
 # Fichiers #
@@ -23,6 +26,11 @@ Handle_Map :    les fonction de parsing de la map, de modification apres input d
 # For the shit and gigles #
 
 [  ]    faire un color code pour du beau turquoise dans le make file
+
 [  ]    faire un effet dégradé de couleur comme le logo homyzsh sur l'ascii art
+
+[  ]    faire un ascii art pour le make file de la libft
+
+[  ]    Clean les fichier de la libft (demander a copilot de remplacer toutes les mentions du nom de l'auteur par baecoliv)
 
 

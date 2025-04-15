@@ -23,16 +23,24 @@ SRCS_DIR		= ./SRC/
 
 UTILS_DIR		= ./Utils/
 
+LIBFT_DIR       = ./Libft/
+
 SRCS 			= $(addprefix $(SRCS_DIR),\
                 so_long.c)
 
 UTILS			= $(addprefix $(UTILS_DIR), \
-                Handle_Win.c Handle_Imput.c)
+                Handle_Win.c Handle_Imput.c Handle_Map.c)
 
-all:			${NAME}
+LIBFT           = $(LIBFT_DIR)libft.a
 
-${NAME}: 		
-				${CC} ${SRCS} ${UTILS} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+all: ${LIBFT} ${NAME}
+
+${LIBFT}:
+				make -C ${LIBFT_DIR}
+
+${NAME}:        
+				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+
 				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
 				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
 				@echo "$(MAGENTA)▓▓      ▓▓▓  $(CYAN)▓▓▓▓  ▓▓▓▓▓▓▓▓  $(TEAL)▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓$(RESET)"

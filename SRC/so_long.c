@@ -6,11 +6,12 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/15 15:19:36 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/15 16:59:23 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
+
 
 int main(void)
 {
@@ -56,6 +57,18 @@ int main(void)
         X = X + offset;
 	    ctr--;
     }
+
+    // test de ft_split //
+    
+    char **result = ft_split("Hello World 42", ' ');
+    for (int i = 0; result[i] != NULL; i++)
+    {
+        ft_printf("%s\n", result[i]);
+        free(result[i]); // Libère chaque chaîne
+    }
+    free(result); // Libère le tableau
+
+    // test de ft_split //
     
     mlx_hook(data.win_ptr, DestroyNotify, KeyPressMask, kill_win, &data);
     

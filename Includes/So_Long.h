@@ -4,10 +4,11 @@
     // Includes //
 
 #include "../mlx_linux/mlx.h"
+#include "../Libft/libft.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include <X11/X.h>
+#include <X11/X.h> // define keymask etc 
+#include <fcntl.h> // define 0_RDONLY etc
 
     // Structs //
 
