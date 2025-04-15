@@ -1,0 +1,1 @@
+to compile : cc SRC/main.c -LMinilibX -lmlx -lXext -lX11
