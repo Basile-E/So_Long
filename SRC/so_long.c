@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/15 11:58:50 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/15 12:23:17 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int kill_win(t_mlx_data *data)
     return 0;
 }
 
-int main(int ac, char **av)
+int main(void)
 {
     t_mlx_data data;
     data.mlx_ptr = mlx_init();
@@ -75,7 +75,7 @@ int main(int ac, char **av)
     Y = 0;
     
     //data.img = mlx_png_file_to_image(); Mensonge !!!
-    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "test/Water.xpm", &width, &height);
+    data.img = mlx_xpm_file_to_image(data.mlx_ptr, "test/Water.xpmw", &width, &height);
     if (!data.img)
     {
         write(2, "erreur d'initialisation de l'image\n", 35);
