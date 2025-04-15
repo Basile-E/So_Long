@@ -3,6 +3,10 @@ NAME			= So_Long
 GREEN			= \033[0;32m
 RED				= \033[0;31m
 RESET			= \033[0m
+TEAL			= \033[0;36m
+PURPLE			= \033[0;35m
+CYAN            = \033[0;36m
+MAGENTA         = \033[0;35m
 
 CC 				= cc
 
@@ -17,36 +21,40 @@ REMOVE 			= rm -f
 
 SRCS_DIR		= ./SRC/
 
+UTILS_DIR		= ./Utils/
 
 SRCS 			= $(addprefix $(SRCS_DIR),\
-				so_long.c)
+                so_long.c)
+
+UTILS			= $(addprefix $(UTILS_DIR), \
+                Handle_Win.c Handle_Imput.c)
 
 all:			${NAME}
 
 ${NAME}: 		
-				${CC} ${SRCS} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
-				@echo "░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░"
-				@echo "▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒"
-				@echo "▓▓      ▓▓▓  ▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓"
-				@echo "███████  ██  ████  ████████  ████████  ████  ██  ██    ██  ████  █"
-				@echo "██      ████      █████████        ███      ███  ███   ███      ██"
+				${CC} ${SRCS} ${UTILS} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
+				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
+				@echo "$(MAGENTA)▓▓      ▓▓▓  $(CYAN)▓▓▓▓  ▓▓▓▓▓▓▓▓  $(TEAL)▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓$(RESET)"
+				@echo "$(PURPLE)███████  $(MAGENTA)██  ████  ████████  $(CYAN)████████  ████  ██  ██    ██  ████  █$(RESET)"
+				@echo "$(PURPLE)██      ████      █████████        ███      ███  ███   ███      ██$(RESET)"
 				@echo "						$(GREEN)....is now ready to run!$(RESET)"
 
 
 fclean:
 				${REMOVE} ${NAME}
-				@echo "░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░"
-				@echo "▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒"
-				@echo "▓▓      ▓▓▓  ▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓"
-				@echo "███████  ██  ████  ████████  ████████  ████  ██  ██    ██  ████  █"
-				@echo "██      ████      █████████        ███      ███  ███   ███      ██"
+				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
+				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
+				@echo "$(MAGENTA)▓▓      ▓▓▓  $(CYAN)▓▓▓▓  ▓▓▓▓▓▓▓▓  $(TEAL)▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓$(RESET)"
+				@echo "$(PURPLE)███████  $(MAGENTA)██  ████  ████████  $(CYAN)████████  ████  ██  ██    ██  ████  █$(RESET)"
+				@echo "$(PURPLE)██      ████      █████████        ███      ███  ███   ███      ██$(RESET)"
 				@echo "						$(GREEN)....is now clean, See you soon!$(RESET)"
 
 
 gdb:			${NAME}
-				${CC} ${SRCSSTANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+				${CC} ${SRCS} ${UTILS} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				gdb ./${NAME}
 
 re:				fclean all
 
-.PHONY:			all clean fclean re rebonus valgrind run run_bonus 
+.PHONY:			all clean fclean re rebonus valgrind run run_bonus
