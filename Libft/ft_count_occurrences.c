@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_occurrences.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acesar-l <acesar-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:18:18 by acesar-l          #+#    #+#             */
-/*   Updated: 2022/03/09 16:18:51 by acesar-l         ###   ########.fr       */
+/*   Created: 2022/03/09 16:18:18 by baecoliv          #+#    #+#             */
+/*   Updated: 2022/03/09 16:18:51 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

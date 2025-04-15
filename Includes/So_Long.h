@@ -19,11 +19,26 @@ typedef struct          s_mlx_data
     void    *img;
 }                       t_mlx_data;
 
+typedef struct          s_game
+{
+    int     collectible_count;
+    void    *sprite;
+    char    **map;
+    int     player_x_pos;
+    int     player_y_pos;
+    int     win_size_x;
+    int     win_size_y;
+    char    *map_name;
+}                       t_game;
+
     // Define //
 
     // Fonctions //
 
 int kill_win(t_mlx_data *data);
+t_game * map_to_img(t_game);
 int handle_imput(int keycode, t_mlx_data *data);
+int open_map(const char *file_name);
+char **map_extractor(t_game game);
 
 #endif

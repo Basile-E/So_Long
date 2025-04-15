@@ -6,16 +6,18 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/15 16:59:23 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:26:13 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
 
-int main(void)
+int main(int ac, char **av)
 {
+    t_game game;
     t_mlx_data data;
+    game.map_name = av[1];
     data.mlx_ptr = mlx_init();
     data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "So_Long");
     
@@ -71,6 +73,8 @@ int main(void)
     // test de ft_split //
     
     mlx_hook(data.win_ptr, DestroyNotify, KeyPressMask, kill_win, &data);
+    
+    map_extractor(game);
     
     mlx_key_hook(data.win_ptr, handle_imput, &data);
     mlx_loop(data.mlx_ptr);

@@ -10,7 +10,7 @@ MAGENTA         = \033[0;35m
 
 CC 				= cc
 
-STANDARD_FLAGS 	= -Wall -Werror -Wextra
+STANDARD_FLAGS 	=
 MINILIBX_FLAGS	= -Lmlx_linux -lmlx -lXext -lX11
 GDB_FLAGS		= -g3
 
@@ -60,7 +60,7 @@ fclean:
 
 
 gdb:			${NAME}
-				${CC} ${SRCS} ${UTILS} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				gdb ./${NAME}
 
 re:				fclean all

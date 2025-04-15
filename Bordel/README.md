@@ -1,12 +1,15 @@
 # So-Long
 
+log avant d'aller me poser un peut, implémentation de la libft gnl et printf nickel, il faut tester le map extractor avec les ac av et clean un peut le main mais on est pret a avancer 
+
 # To-Do #
+
 
 [  ]    faire les fonctions de creation des sprites en partant d'un tableau
 
 [  ]    si possible : faire la fonction qui envoie les sprites a la fenetre tout les x fois par seconde (on peut choisire ?)
 
-[  ]    faire la fonction de parsing de map pour en faire un tableau
+[  ]     faire la fonction de parsing de map pour en faire un tableau
 
 [  ]    faire les fonction de gestion des input : ctrl + c, w, a, s, d, close win
 
@@ -14,7 +17,15 @@
 
 [  ]    trouver des textures qui ont pas les bords chelou, ou comprendre comment m'en servir
 
+[  ]    faire un clean du main, ajouter les variables nécessaire a des struct dans le .h et supprimer le rest ou l'envoyer dans ./test/
 
+[  ]    monter les structures nécéssaires
+
+[  ]    je peux potentiellement faire un strlen de mon premier appel a gnl sur current line pour avoir la longeure de la fenetre en multipliant par 64
+
+[  ]    je peux avoir le y en comptant le nombre de ligne dans char ** map
+
+[  ]    faire une structure d'affichage qui a ses param
 
 
 # Fichiers #
@@ -25,12 +36,10 @@ Handle_Map :    les fonction de parsing de la map, de modification apres input d
 
 # For the shit and gigles #
 
-[  ]    faire un color code pour du beau turquoise dans le make file
+[X]    faire un color code pour du beau turquoise dans le make file
 
 [  ]    faire un effet dégradé de couleur comme le logo homyzsh sur l'ascii art
 
 [  ]    faire un ascii art pour le make file de la libft
-
-[  ]    Clean les fichier de la libft (demander a copilot de remplacer toutes les mentions du nom de l'auteur par baecoliv)
 
 
