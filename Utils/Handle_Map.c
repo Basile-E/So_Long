@@ -69,8 +69,10 @@ int map_to_textures(t_game *game)
             print_y = y * game->tile_size_y;
             if (game->map[y][x] == '1')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
+                if (game->map[y][x] == '0')
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground, (print_x), (print_y));
             if (game->map[y][x] == 'p')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player, (print_x), (print_y));
             x++;
         }
         y++;
