@@ -43,6 +43,6 @@ t_game *Init_Textures(t_game *game)
 {
     game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&game->tile_size_x ,&game->tile_size_y);
     game->player = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&game->tile_size_x ,&game->tile_size_y);
-    game->ground = mlx_xpm_file_to_image(game->mlx_ptr, "test/terre.xpm",&game->tile_size_x ,&game->tile_size_y);
+    game->ground = mlx_xpm_file_to_image(game->mlx_ptr, "test/ground.xpm",&game->tile_size_x ,&game->tile_size_y);
     return (game);
 }

@@ -24,7 +24,8 @@ int handle_imput(int keycode, t_game *game)
 
 int move_player(int keycode, t_game *game)
 {
-    if (keycode == 122)
+    //map_to_possition(game);
+    if ((keycode == 122) && (game->map[game->player_y_pos - 1][game->player_x_pos] != '1' ))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
         game->map[game->player_y_pos - 1][game->player_x_pos] = 'p';
@@ -32,7 +33,7 @@ int move_player(int keycode, t_game *game)
         map_to_textures(game);
         print_map_terminal(game);
     }
-    if (keycode == 113)
+    if (keycode == 113 && (game->map[game->player_y_pos][game->player_x_pos - 1] != '1' ))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
         game->map[game->player_y_pos][game->player_x_pos - 1] = 'p';
@@ -40,7 +41,7 @@ int move_player(int keycode, t_game *game)
         map_to_textures(game);
         print_map_terminal(game);
     }
-    if (keycode == 115)
+    if (keycode == 115 && (game->map[game->player_y_pos + 1][game->player_x_pos] != '1' ))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
         game->map[game->player_y_pos + 1][game->player_x_pos] = 'p';
@@ -48,7 +49,7 @@ int move_player(int keycode, t_game *game)
         map_to_textures(game);
         print_map_terminal(game);
     }
-    if (keycode == 100)
+    if (keycode == 100 && (game->map[game->player_y_pos][game->player_x_pos + 1] != '1' ))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
         game->map[game->player_y_pos][game->player_x_pos + 1] = 'p';
@@ -56,6 +57,7 @@ int move_player(int keycode, t_game *game)
         map_to_textures(game);
         print_map_terminal(game);
     }
+    return (1);
 }
 
 // faire une fonction pour les modification de la carte 

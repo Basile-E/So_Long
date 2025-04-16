@@ -2,6 +2,7 @@
 
 []
 {}
+||
 
 il me faut un fonction qui init la player position et la possition des collectibles
 elle prend la game en input et parse la map en cherchan p, un fois qu'il est dessus il set la player pos idem pour les collectible 
