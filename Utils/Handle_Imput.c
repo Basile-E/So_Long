@@ -12,18 +12,25 @@
 
 #include "../Includes/So_Long.h"
 
-int handle_imput(int keycode, t_mlx *data)
+int handle_imput(int keycode, t_game *game)
 {
     ft_printf("hello from Keyhook%i,\n", keycode);
 
     
     if (keycode == 99)
-        kill_win(data);
+        kill_win(game);
 
     if (keycode == 122)
-        
+        //move_player(keycode, game) up;
+    if (keycode == 113)
+        // move left
+    if
     return (0);
 }
 
+int move_player(int keycode, t_game *game)
+{
+
+}
 
 

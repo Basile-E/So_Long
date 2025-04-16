@@ -13,12 +13,6 @@
 
     // Structs //
 
-typedef struct          s_mlx
-{
-    void    *mlx_ptr;
-    void    *win_ptr;
-}                       t_mlx;
-
 typedef struct          s_game
 {
     int     collectible_count;
@@ -28,6 +22,8 @@ typedef struct          s_game
     int     player_y_pos;
     int     win_size_x;
     int     win_size_y;
+    void    *mlx_ptr;
+    void    *win_ptr;
 }                       t_game;
 
 typedef struct          s_textures
@@ -46,13 +42,13 @@ typedef struct          s_textures
 
     // Fonctions //
 
-int kill_win(t_mlx *data);
+int kill_win(t_game *game);
 t_game * map_to_img(t_game);
-int handle_imput(int keycode, t_mlx *data);
+int handle_imput(int keycode, t_game *game);
 int open_map(const char *file_name);
 char **map_extractor(char *map_name);
 t_textures *map_to_display(char **map, t_textures *textures);
-t_textures *Init_Textures(t_textures *textures, t_mlx *mlx);
-int map_to_textures(t_game *game, t_textures *textures, t_mlx *mlx);
+t_textures *Init_Textures(t_textures *textures, t_game *game);
+int map_to_textures(t_game *game, t_textures *textures);
 
 #endif

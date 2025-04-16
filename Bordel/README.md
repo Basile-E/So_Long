@@ -19,6 +19,9 @@ if (keycap == 122 (up))
     update player pos
 etc
 
+
+possible probleme avec le fait d'avor une struct diff pour game et mlx je peux les mettre ensemble 
+
 # To-Do #
 
 

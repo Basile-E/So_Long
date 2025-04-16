@@ -54,7 +54,7 @@ char **map_extractor(char *map_name)
     return (map);
 }
 
-int map_to_textures(t_game *game, t_textures *textures, t_mlx *mlx)
+int map_to_textures(t_game *game, t_textures *textures)
 {
     int x;
     int y;
@@ -70,7 +70,7 @@ int map_to_textures(t_game *game, t_textures *textures, t_mlx *mlx)
             print_x = x * textures->tile_size_x;
             print_y = y * textures->tile_size_y;
             if (game->map[y][x] == '1')
-                mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, textures->wall, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, textures->wall, (print_x), (print_y));
             x++;
         }
         y++;
