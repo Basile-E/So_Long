@@ -14,23 +14,48 @@
 
 int handle_imput(int keycode, t_game *game)
 {
-    ft_printf("hello from Keyhook%i,\n", keycode);
-
-    
+    ft_printf("key being pressed : %i,\n", keycode);
     if (keycode == 99)
         kill_win(game);
-
-    if (keycode == 122)
-        //move_player(keycode, game) up;
-    if (keycode == 113)
-        // move left
-    if
+    if ((keycode <= 122) && (keycode >= 100))
+        move_player(keycode, game);
     return (0);
 }
 
 int move_player(int keycode, t_game *game)
 {
-
+    if (keycode == 122)
+    {
+        game->map[game->player_y_pos][game->player_x_pos] = '0';
+        game->map[game->player_y_pos - 1][game->player_x_pos] = 'p';
+        game->player_y_pos -= 1;
+        map_to_textures(game);
+        print_map_terminal(game);
+    }
+    if (keycode == 113)
+    {
+        game->map[game->player_y_pos][game->player_x_pos] = '0';
+        game->map[game->player_y_pos][game->player_x_pos - 1] = 'p';
+        game->player_x_pos -= 1;
+        map_to_textures(game);
+        print_map_terminal(game);
+    }
+    if (keycode == 115)
+    {
+        game->map[game->player_y_pos][game->player_x_pos] = '0';
+        game->map[game->player_y_pos + 1][game->player_x_pos] = 'p';
+        game->player_y_pos += 1;
+        map_to_textures(game);
+        print_map_terminal(game);
+    }
+    if (keycode == 100)
+    {
+        game->map[game->player_y_pos][game->player_x_pos] = '0';
+        game->map[game->player_y_pos][game->player_x_pos + 1] = 'p';
+        game->player_x_pos += 1;
+        map_to_textures(game);
+        print_map_terminal(game);
+    }
 }
 
-
+// faire une fonction pour les modification de la carte 

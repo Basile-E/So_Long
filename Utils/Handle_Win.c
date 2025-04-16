@@ -20,7 +20,7 @@ int kill_win(t_game *game)
     return (0);
 }
 // permet de connaitre la taille du display en x et y pour mlx_nez_window
-t_textures *map_to_display(char **map, t_textures *textures)
+t_game *map_to_display(char **map, t_game *game)
 {
     int x;
     int y;
@@ -31,17 +31,17 @@ t_textures *map_to_display(char **map, t_textures *textures)
         y++;
     // troubleshoot
     ft_printf("Largeur (x): %d, Hauteur (y): %d\n", x, y);
-    // Utiliser x et y pour configurer la fenêtre ou les textures
-    textures->display_size_y = y * TILE_SIZE;
-    textures->display_size_x = x * TILE_SIZE;
-    ft_printf("textures->display_size_y %d\ntextures->display_size_x %d\n", textures->display_size_y, textures->display_size_x);
+    // Utiliser x et y pour configurer la fenêtre ou les game
+    game->display_size_y = y * TILE_SIZE;
+    game->display_size_x = x * TILE_SIZE;
+    ft_printf("game->display_size_y %d\ngame->display_size_x %d\n", game->display_size_y, game->display_size_x);
 
-    return (textures);
+    return (game);
 }
 
-t_textures *Init_Textures(t_textures *textures, t_game *game)
+t_game *Init_Textures(t_game *game)
 {
-    textures->wall = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&textures->tile_size_x ,&textures->tile_size_y);
-    textures->player = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&textures->tile_size_x ,&textures->tile_size_y);
-    return (textures);
+    game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&game->tile_size_x ,&game->tile_size_y);
+    game->player = mlx_xpm_file_to_image(game->mlx_ptr, "test/Water.xpm",&game->tile_size_x ,&game->tile_size_y);
+    return (game);
 }

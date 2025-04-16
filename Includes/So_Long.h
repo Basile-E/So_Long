@@ -20,14 +20,8 @@ typedef struct          s_game
     char    **map;
     int     player_x_pos;
     int     player_y_pos;
-    int     win_size_x;
-    int     win_size_y;
     void    *mlx_ptr;
     void    *win_ptr;
-}                       t_game;
-
-typedef struct          s_textures
-{
     void    *wall;
     void    *ground;
     void    *player;
@@ -36,7 +30,8 @@ typedef struct          s_textures
     int     tile_size_y; 
     int     display_size_x;
     int     display_size_y;
-}                       t_textures;
+}                       t_game;
+
 
     // Define //
 
@@ -47,8 +42,11 @@ t_game * map_to_img(t_game);
 int handle_imput(int keycode, t_game *game);
 int open_map(const char *file_name);
 char **map_extractor(char *map_name);
-t_textures *map_to_display(char **map, t_textures *textures);
-t_textures *Init_Textures(t_textures *textures, t_game *game);
-int map_to_textures(t_game *game, t_textures *textures);
+t_game *map_to_display(char **map, t_game *game);
+t_game *Init_Textures(t_game *game);
+int map_to_textures(t_game *game);
+int move_player(int keycode, t_game *game);
+int map_to_possition(t_game *game);
+int print_map_terminal(t_game *game); // troubleshoot
 
 #endif

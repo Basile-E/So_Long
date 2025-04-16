@@ -45,16 +45,14 @@ char **map_extractor(char *map_name)
         temp = get_next_line(fd);
         if (!temp)
             break;
-        ft_printf("temp apres gnl :\n%s\n", temp);
-        current_line = ft_strjoin(current_line, temp),
-        ft_printf("current line apres join :\n%s\n", current_line);
+        current_line = ft_strjoin(current_line, temp);
     }
     map = ft_split(current_line, '\n');
     free(temp);
     return (map);
 }
 
-int map_to_textures(t_game *game, t_textures *textures)
+int map_to_textures(t_game *game)
 {
     int x;
     int y;
@@ -67,10 +65,36 @@ int map_to_textures(t_game *game, t_textures *textures)
         x = 0;
         while(game->map[y][x])
         {
-            print_x = x * textures->tile_size_x;
-            print_y = y * textures->tile_size_y;
+            print_x = x * game->tile_size_x;
+            print_y = y * game->tile_size_y;
             if (game->map[y][x] == '1')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, textures->wall, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
+            if (game->map[y][x] == 'p')
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
+            x++;
+        }
+        y++;
+    }
+    return (1);
+}
+// sert a récupérer la possition du joueur // 
+// il faut une fonction qui met a jour la map //
+int map_to_possition(t_game *game)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (game->map[y])
+    {
+        x = 0;
+        while(game->map[y][x])
+        {
+            if (game->map[y][x] == 'p')
+            {
+                game->player_x_pos = x;
+                game->player_y_pos = y;
+            }
             x++;
         }
         y++;
@@ -78,5 +102,18 @@ int map_to_textures(t_game *game, t_textures *textures)
     return (1);
 }
 
+// prendre le code au dessus et faire une fonction set player possition
 
+int print_map_terminal(t_game *game)
+{
+    int x;
+    int y;
 
+    y = 0;
+    while (game->map[y])
+    {
+        ft_printf("%s\n",game->map[y]);
+        y++;
+    }
+    return (1);
+}
