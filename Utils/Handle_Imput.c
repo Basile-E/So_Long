@@ -60,4 +60,5 @@ int move_player(int keycode, t_game *game)
     return (1);
 }
 
-// faire une fonction pour les modification de la carte 
+// faire une fonction pour les modifications de la carte 
+// faire une fonction check next case pour savoir si on peut se deplacer ou si il y un collectible
