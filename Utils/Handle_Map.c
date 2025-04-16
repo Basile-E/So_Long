@@ -6,13 +6,13 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/16 13:10:03 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/16 16:09:16 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
-int open_map(const char *file_name)
+int open_file(const char *file_name)
 {
     int fd;
     fd = open(file_name, O_RDONLY);
@@ -35,7 +35,7 @@ char **map_extractor(char *map_name)
     char    *temp;
     char    **map;
 
-    fd = open_map(map_name);
+    fd = open_file(map_name);
     if (fd == -1)
         return (NULL);
     
@@ -52,4 +52,9 @@ char **map_extractor(char *map_name)
     map = ft_split(current_line, '\n');
     free(temp);
     return (map);
+}
+
+int map_to_textures(t_game *game, t_textures *s_textures)
+{
+    
 }
