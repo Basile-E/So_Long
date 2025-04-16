@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <X11/X.h> // define keymask etc 
 #include <fcntl.h> // define 0_RDONLY etc
+#define TILE_SIZE 64
 
     // Structs //
 
@@ -28,8 +29,18 @@ typedef struct          s_game
     int     player_y_pos;
     int     win_size_x;
     int     win_size_y;
-    char    *map_name;
 }                       t_game;
+
+typedef struct          s_textures
+{
+    void    *wall;
+    void    *ground;
+    void    *player;
+    void    *collectible;
+    int     tile_size; 
+    int     display_size_x;
+    int     display_size_y;
+}                       t_textures;
 
     // Define //
 
@@ -39,6 +50,7 @@ int kill_win(t_mlx_data *data);
 t_game * map_to_img(t_game);
 int handle_imput(int keycode, t_mlx_data *data);
 int open_map(const char *file_name);
-char **map_extractor(t_game game);
+char **map_extractor(char *map_name);
+t_textures *map_to_display(char **map, t_textures *textures);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/15 18:46:21 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:10:03 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int open_map(const char *file_name)
     fd = open(file_name, O_RDONLY);
     if (fd == -1)
     {
-        write(2, "Error: Failed to open the map file\n", 32);
+        write(2, "Error: Failed to open the map file\n", 35);
         return (-1);
     }
 
@@ -28,29 +28,28 @@ int open_map(const char *file_name)
 
 // faut en fait un appel depuis main en lui passant la structure game en param
 // fonctionne !! 
-char **map_extractor(t_game game)
+char **map_extractor(char *map_name)
 {
     int     fd;
-    char    *line;
     char    *current_line;
     char    *temp;
+    char    **map;
 
-    fd = open_map(game.map_name);
+    fd = open_map(map_name);
     if (fd == -1)
         return (NULL);
     
-    line = NULL;
     current_line = get_next_line(fd);
     while(current_line)
     {
-        temp = line; // Sauvegarde l'ancienne chaîne
-        line = ft_strjoin(line, current_line); // Concatène la ligne actuelle
-        free(temp); // Libère l'ancienne chaîne
-        ft_printf("%s\n", current_line); // troubleshoot 
-        free(current_line); // Libère la ligne lue
-        current_line = get_next_line(fd); 
+        temp = get_next_line(fd);
+        if (!temp)
+            break;
+        ft_printf("temp apres gnl :\n%s\n", temp);
+        current_line = ft_strjoin(current_line, temp),
+        ft_printf("current line apres join :\n%s\n", current_line);
     }
-    game.map = ft_split(line, '\n');
-    free(line);
-    return (game.map);
+    map = ft_split(current_line, '\n');
+    free(temp);
+    return (map);
 }

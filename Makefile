@@ -25,6 +25,8 @@ UTILS_DIR		= ./Utils/
 
 LIBFT_DIR       = ./Libft/
 
+TEST 			= ./test/main.c
+
 SRCS 			= $(addprefix $(SRCS_DIR),\
                 so_long.c)
 
@@ -50,7 +52,7 @@ ${NAME}:
 
 
 fclean:
-				${REMOVE} ${NAME}
+				${REMOVE} ${NAME} Test
 				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
 				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
 				@echo "$(MAGENTA)▓▓      ▓▓▓  $(CYAN)▓▓▓▓  ▓▓▓▓▓▓▓▓  $(TEAL)▓▓▓▓▓▓▓▓  ▓▓▓▓  ▓▓  ▓  ▓  ▓▓  ▓▓▓   ▓$(RESET)"
@@ -63,6 +65,14 @@ gdb:			${NAME}
 				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				gdb ./${NAME}
 
+test:			${TEST}  
+				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o Test
+
+gdb_test:		
+				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o Test
+				gdb ./Test
+
+
 re:				fclean all
 
-.PHONY:			all clean fclean re rebonus valgrind run run_bonus
+.PHONY:			all clean fclean re valgrind run 
