@@ -42,17 +42,21 @@ int main(int ac, char **av)
    
    
     // Danger Zone //
-     int ctr = 10;
-    int X = 0;
-    while(ctr > 0)
-    {
-        
-        mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, textures->wall, X, 0);
-        X +=textures->tile_size_x;
-        ft_printf("texture.tile_size = %d\n", textures->tile_size_x);
-        ft_printf("x = %d\n", X);
-	    ctr--;
-    } //boucle troubleshoot de img basiquement sera remplacer par l'affichage de la carte et des textures
+    map_to_textures(game, textures, mlx);
+
+
+
+
+    // int ctr = 10;
+    // int X = 0;
+    // while(ctr > 0)
+    // { 
+    //     mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, textures->wall, X, 0);
+    //     X +=textures->tile_size_x;
+    //     ft_printf("texture.tile_size = %d\n", textures->tile_size_x);
+    //     ft_printf("x = %d\n", X);
+	//     ctr--;
+    // } //boucle troubleshoot de img basiquement sera remplacer par l'affichage de la carte et des textures
     
 
 

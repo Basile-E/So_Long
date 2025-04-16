@@ -53,5 +53,6 @@ int open_map(const char *file_name);
 char **map_extractor(char *map_name);
 t_textures *map_to_display(char **map, t_textures *textures);
 t_textures *Init_Textures(t_textures *textures, t_mlx *mlx);
+int map_to_textures(t_game *game, t_textures *textures, t_mlx *mlx);
 
 #endif
