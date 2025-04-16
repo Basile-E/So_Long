@@ -1,6 +1,6 @@
 # So-Long
 
-log avant d'aller me poser un peut, implémentation de la libft gnl et printf nickel, il faut tester le map extractor avec les ac av et clean un peut le main mais on est pret a avancer 
+
 
 # To-Do #
 
@@ -9,7 +9,7 @@ log avant d'aller me poser un peut, implémentation de la libft gnl et printf ni
 
 [  ]    si possible : faire la fonction qui envoie les sprites a la fenetre tout les x fois par seconde (on peut choisire ?)
 
-[  ]     faire la fonction de parsing de map pour en faire un tableau
+[X]     faire la fonction de parsing de map pour en faire un tableau
 
 [  ]    faire les fonction de gestion des input : ctrl + c, w, a, s, d, close win
 
@@ -38,8 +38,8 @@ Handle_Map :    les fonction de parsing de la map, de modification apres input d
 
 [X]    faire un color code pour du beau turquoise dans le make file
 
-[  ]    faire un effet dégradé de couleur comme le logo homyzsh sur l'ascii art
+[X]    faire un effet dégradé de couleur comme le logo homyzsh sur l'ascii art
 
-[  ]    faire un ascii art pour le make file de la libft
+[  ]    faire un ascii art pour le makefile de la libft
 
 
