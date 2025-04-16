@@ -15,8 +15,15 @@
 int handle_imput(int keycode, t_mlx *data)
 {
     ft_printf("hello from Keyhook%i,\n", keycode);
+
+    
     if (keycode == 99)
         kill_win(data);
+
+    if (keycode == 122)
+        
     return (0);
 }
+
+
 

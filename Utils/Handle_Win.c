@@ -42,5 +42,6 @@ t_textures *map_to_display(char **map, t_textures *textures)
 t_textures *Init_Textures(t_textures *textures, t_mlx *mlx)
 {
     textures->wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "test/Water.xpm",&textures->tile_size_x ,&textures->tile_size_y);
+    textures->player = mlx_xpm_file_to_image(mlx->mlx_ptr, "test/Water.xpm",&textures->tile_size_x ,&textures->tile_size_y);
     return (textures);
 }

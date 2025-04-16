@@ -3,7 +3,21 @@
 []
 {}
 
+il me faut un fonction qui init la player position et la possition des collectibles
+elle prend la game en input et parse la map en cherchan p, un fois qu'il est dessus il set la player pos idem pour les collectible 
 
+il faudrais que cette fonction change le fichier de la map
+
+dans la fonction handle_imput :
+si keycode == 122
+    move_player(keycode, t_game *game) 
+etc 
+
+move_player(keycode, t_game *game)
+if (keycap == 122 (up))
+    game.map[player_pos_x][player_pos_y + 1] = game.map[player_pos_x][player_pos_y]
+    update player pos
+etc
 
 # To-Do #
 
