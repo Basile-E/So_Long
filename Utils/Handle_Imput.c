@@ -6,12 +6,13 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:15:46 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 15:14:13 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 16:35:21 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
+// Gere les input envoyer par mlx_key_hook et appel les fonction néscéssaire //
 int handle_imput(int keycode, t_game *game)
 {
     ft_printf("key being pressed : %i,\n", keycode);
@@ -22,6 +23,7 @@ int handle_imput(int keycode, t_game *game)
     return (0);
 }
 
+// En fonction du keycode passer en param par Handle_Imput deplace le joueur et display la map //
 int move_player(int keycode, t_game *game)
 {
     if ((keycode == 122) && (game->map[game->player_y_pos - 1][game->player_x_pos] != '1' ))
@@ -47,6 +49,7 @@ int move_player(int keycode, t_game *game)
     return (1);
 }
 
+// potentielement redondant mais set la position du joueur sur la carte et reset l'ancienne possition //
 int set_player(t_game * game, int keycode)
 {
     if ((keycode == 122) && (1 == check_next_case(game->map[game->player_y_pos - 1][game->player_x_pos], game)))
@@ -72,8 +75,8 @@ int set_player(t_game * game, int keycode)
     return (1);
 }
 
-// si la ligne de set_player est trop longue
-// je peux passer toute la map et faire le calcul dans la fonction
+// check si la prochaine case est un mur, un collectible ou la sortie //
+// et autorise ou non le déplacement //
 int check_next_case(char next_case, t_game *game)
 {
     if (next_case == '1')

@@ -6,12 +6,13 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 15:12:32 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 16:35:36 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
+// open le file présent a l'adresse envoyer en param //
 int open_file(const char *file_name)
 {
     int fd;
@@ -25,9 +26,7 @@ int open_file(const char *file_name)
     return(fd);
 }
 
-
-// faut en fait un appel depuis main en lui passant la structure game en param
-// fonctionne !! 
+// Passe la map .ber en char ** map //
 char **map_extractor(char *map_name)
 {
     int     fd;
@@ -51,7 +50,7 @@ char **map_extractor(char *map_name)
     free(temp);
     return (map);
 }
-
+//  Display la map dans game //
 int map_to_textures(t_game *game)
 {
     int x;
@@ -84,7 +83,6 @@ int map_to_textures(t_game *game)
     return (1);
 }
 // sert a récupérer la possition du joueur // 
-// il faut une fonction qui met a jour la map //
 int map_to_possition(t_game *game)
 {
     int x;
@@ -107,23 +105,7 @@ int map_to_possition(t_game *game)
     }
     return (1);
 }
-
-// prendre le code au dessus et faire une fonction set player possition
-
-int print_map_terminal(t_game *game)
-{
-    int x;
-    int y;
-
-    y = 0;
-    while (game->map[y])
-    {
-        ft_printf("%s\n",game->map[y]);
-        y++;
-    }
-    return (1);
-}
-
+// conte le nombre de collectible au debut du jeu //
 int count_max_collectible(t_game *game)
 {
     int x;

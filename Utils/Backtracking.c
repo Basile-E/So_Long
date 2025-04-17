@@ -6,13 +6,13 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:23:14 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 15:37:40 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 16:34:24 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
-// Helper function to perform Depth-First Search (DFS)
+// Execute le Backtracking //
 static int dfs(char **map, int **visited, int x, int y, int max_x, int max_y)
 {
     if (x < 0 || y < 0 || x >= max_x || y >= max_y || map[y][x] == '1' || visited[y][x])
@@ -31,7 +31,7 @@ static int dfs(char **map, int **visited, int x, int y, int max_x, int max_y)
     return 0;
 }
 
-// Function to allocate and initialize the visited array
+// Alloue la Mémoire 
 static int **allocate_visited(int rows, int cols)
 {
     int **visited = malloc(rows * sizeof(int *));
@@ -61,7 +61,7 @@ static int **allocate_visited(int rows, int cols)
     return visited;
 }
 
-// Function to free the visited array
+// Libere l'array visité 
 static void free_visited(int **visited, int rows)
 {
     int i = 0;
@@ -73,7 +73,7 @@ static void free_visited(int **visited, int rows)
     free(visited);
 }
 
-// Helper function to find the player's position
+// Trouve la Pos du joueur //
 static int find_player_position(t_game *game, int *player_x, int *player_y)
 {
     int y = 0;
@@ -95,7 +95,7 @@ static int find_player_position(t_game *game, int *player_x, int *player_y)
     return 0;
 }
 
-// Main function to check if the map is valid
+// Renvoi 1 si la map est valide et 0 si elle ne l'est pas 
 int is_valid_map(t_game *game)
 {
     int **visited;

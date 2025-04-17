@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/17 15:34:06 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 16:43:18 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,25 @@ int main(int ac, char **av)
 
     game = malloc(sizeof(t_game));
     if (!game)
-        return (ft_printf("error while first malloc, boulet\n"));
+        return (ft_printf("Error while first malloc, boulet\n"));
     if (ac != 2)
-        return(ft_printf("usage : ./So_Long <mapfile.txt>, boulet\n"));
-    // initialise la mlx //    
+        return(ft_printf("usage : ./So_Long <mapfile.txt>, boulet\n")); 
     game->mlx_ptr = mlx_init();
     if (!game->mlx_ptr)
-        return(ft_printf("erreur d'initialisation de la MiniLibX\n"));
-    // place les textures dans la struct pour les utiliser plus tard //   
+        return(ft_printf("Erreur d'initialisation de la MiniLibX\n")); 
     Init_Textures(game);
     if (!game->wall)
-        return(ft_printf("erreur d'initialisation de l'image\n"));
-    // pars la map, l'ajoute a la struct et calcul la taille de l'écran //
+        return(ft_printf("Erreur d'initialisation de l'image\n"));
     game->map = map_extractor(av[1]);
     map_to_display(game->map, game);
     game->win_ptr = mlx_new_window(game->mlx_ptr, game->display_size_x, game->display_size_y, av[0]);
-    // display la map qu'on lui envoi //
     map_to_textures(game);
     map_to_possition(game);
-    //au dessus c'est good//
-    
     count_max_collectible(game);
     if (1 != is_valid_map(game))
-        return (ft_printf("map invalide\n"));
-    
-   
-    // Danger Zone //
-
-
-    //basiquement ok, a voir au moment des fonctions d'imput//
+        return (ft_printf("Map invalide\n"));
     mlx_hook(game->win_ptr, DestroyNotify, KeyPressMask, kill_win, game);
     mlx_key_hook(game->win_ptr, handle_imput, game);
     mlx_loop(game->mlx_ptr);
     return 0;
 }
-

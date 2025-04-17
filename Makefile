@@ -1,5 +1,7 @@
 NAME			= So_Long
 
+#		Couleurs		#
+
 GREEN			= \033[0;32m
 RED				= \033[0;31m
 RESET			= \033[0m
@@ -8,34 +10,32 @@ PURPLE			= \033[0;35m
 CYAN            = \033[0;36m
 MAGENTA         = \033[0;35m
 
-CC 				= cc
 
-STANDARD_FLAGS 	=
+#		FLags & Commandes CLI		#
+
+CC 				= cc
+REMOVE 			= rm -f
+STANDARD_FLAGS 	= -Wall -Wextra -Werror
 MINILIBX_FLAGS	= -Lmlx_linux -lmlx -lXext -lX11
 GDB_FLAGS		= -g3
-
 VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
 --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
 
-REMOVE 			= rm -f
+#		Directories			#
 
 SRCS_DIR		= ./SRC/
-
 UTILS_DIR		= ./Utils/
-
 LIBFT_DIR       = ./Libft/
-
 TEST 			= ./test/main.c
-
 SRCS 			= $(addprefix $(SRCS_DIR),\
                 so_long.c)
-
 UTILS			= $(addprefix $(UTILS_DIR), \
                 Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c)
-
 LIBFT           = $(LIBFT_DIR)libft.a
 
-all: ${LIBFT} ${NAME}
+#		Fonction		#	
+
+all: 		${LIBFT} ${NAME}
 
 ${LIBFT}:
 				make -C ${LIBFT_DIR}
@@ -50,6 +50,9 @@ ${NAME}:
 				@echo "$(PURPLE)██      ████      █████████        ███      ███  ███   ███      ██$(RESET)"
 				@echo "						$(GREEN)....is now ready to run!$(RESET)"
 
+clean:
+				${REMOVE} ${NAME} Test
+				@echo "$(TEAL)Cleaning object files and temporary files...$(RESET)"
 
 fclean:
 				${REMOVE} ${NAME} Test
@@ -60,19 +63,20 @@ fclean:
 				@echo "$(PURPLE)██      ████      █████████        ███      ███  ███   ███      ██$(RESET)"
 				@echo "						$(GREEN)....is now clean, See you soon!$(RESET)"
 
-
-gdb:			${NAME}
+gdb:
 				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				gdb ./${NAME}
 
-test:			${TEST}  
+test:  
 				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o Test
 
 gdb_test:		
 				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o Test
 				gdb ./Test
 
+run:
+				${VALGRIND} ./${NAME} Map/sophie.ber
 
 re:				fclean all
 
-.PHONY:			all clean fclean re valgrind run 
+.PHONY:			all clean fclean re valgrind run
