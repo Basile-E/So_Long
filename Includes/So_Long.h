@@ -16,6 +16,7 @@
 typedef struct          s_game
 {
     int     collectible_count;
+    int     collectible_max;
     void    *sprite;
     char    **map;
     int     player_x_pos;
@@ -26,6 +27,7 @@ typedef struct          s_game
     void    *ground;
     void    *player;
     void    *collectible;
+    void    *exit;
     int     tile_size_x;
     int     tile_size_y; 
     int     display_size_x;
@@ -48,5 +50,8 @@ int map_to_textures(t_game *game);
 int move_player(int keycode, t_game *game);
 int map_to_possition(t_game *game);
 int print_map_terminal(t_game *game); // troubleshoot
+int set_player(t_game * game, int keycode);
+int check_next_case(char next_case, t_game *game);
+int count_max_collectible(t_game *game);
 
 #endif

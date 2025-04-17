@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/16 16:07:57 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 14:52:37 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int main(int ac, char **av)
     game->win_ptr = mlx_new_window(game->mlx_ptr, game->display_size_x, game->display_size_y, av[0]);
     // display la map qu'on lui envoi //
     map_to_textures(game);
+    map_to_possition(game);
     //au dessus c'est good//
     
-    
-    ;
+    count_max_collectible(game);
    
     // Danger Zone //
 

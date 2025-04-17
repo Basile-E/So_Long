@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/16 16:09:16 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 14:51:27 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,14 @@ int map_to_textures(t_game *game)
             print_y = y * game->tile_size_y;
             if (game->map[y][x] == '1')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
-                if (game->map[y][x] == '0')
+            if (game->map[y][x] == '0')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground, (print_x), (print_y));
             if (game->map[y][x] == 'p')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player, (print_x), (print_y));
+            if (game->map[y][x] == 'c')
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->collectible, (print_x), (print_y));
+            if (game->map[y][x] == 'e')
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit, (print_x), (print_y));
             x++;
         }
         y++;
@@ -115,6 +119,26 @@ int print_map_terminal(t_game *game)
     while (game->map[y])
     {
         ft_printf("%s\n",game->map[y]);
+        y++;
+    }
+    return (1);
+}
+
+int count_max_collectible(t_game *game)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (game->map[y])
+    {
+        x = 0;
+        while(game->map[y][x])
+        {
+            if (game->map[y][x] == 'c')
+                game->collectible_max += 1;
+            x++;
+        }
         y++;
     }
     return (1);
