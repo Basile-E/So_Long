@@ -37,7 +37,9 @@ int main(int ac, char **av)
     // display la map qu'on lui envoi //
     map_to_textures(game);
     //au dessus c'est good//
-    map_to_possition(game);
+    
+    
+    ;
    
     // Danger Zone //
 
