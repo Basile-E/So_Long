@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 14:51:27 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 15:12:32 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ int map_to_textures(t_game *game)
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
             if (game->map[y][x] == '0')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground, (print_x), (print_y));
-            if (game->map[y][x] == 'p')
+            if (game->map[y][x] == 'P')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player, (print_x), (print_y));
-            if (game->map[y][x] == 'c')
+            if (game->map[y][x] == 'C')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->collectible, (print_x), (print_y));
-            if (game->map[y][x] == 'e')
+            if (game->map[y][x] == 'E')
                 mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit, (print_x), (print_y));
             x++;
         }
@@ -96,7 +96,7 @@ int map_to_possition(t_game *game)
         x = 0;
         while(game->map[y][x])
         {
-            if (game->map[y][x] == 'p')
+            if (game->map[y][x] == 'P')
             {
                 game->player_x_pos = x;
                 game->player_y_pos = y;
@@ -135,7 +135,7 @@ int count_max_collectible(t_game *game)
         x = 0;
         while(game->map[y][x])
         {
-            if (game->map[y][x] == 'c')
+            if (game->map[y][x] == 'C')
                 game->collectible_max += 1;
             x++;
         }

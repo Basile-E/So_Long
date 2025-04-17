@@ -54,4 +54,6 @@ int set_player(t_game * game, int keycode);
 int check_next_case(char next_case, t_game *game);
 int count_max_collectible(t_game *game);
 
+//backtracking
+int is_valid_map(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:15:46 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 14:58:58 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 15:14:13 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,22 @@ int set_player(t_game * game, int keycode)
     if ((keycode == 122) && (1 == check_next_case(game->map[game->player_y_pos - 1][game->player_x_pos], game)))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
-        game->map[game->player_y_pos -= 1][game->player_x_pos] = 'p';
+        game->map[game->player_y_pos -= 1][game->player_x_pos] = 'P';
     }
     if (keycode == 113 && (check_next_case(game->map[game->player_y_pos][game->player_x_pos - 1], game)))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
-        game->map[game->player_y_pos][game->player_x_pos -= 1] = 'p';
+        game->map[game->player_y_pos][game->player_x_pos -= 1] = 'P';
     }
     if (keycode == 115 && (1 == check_next_case(game->map[game->player_y_pos + 1][game->player_x_pos], game)))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
-        game->map[game->player_y_pos += 1][game->player_x_pos] = 'p';
+        game->map[game->player_y_pos += 1][game->player_x_pos] = 'P';
     }
     if (keycode == 100 && (1 == check_next_case(game->map[game->player_y_pos][game->player_x_pos + 1], game)))
     {
         game->map[game->player_y_pos][game->player_x_pos] = '0';
-        game->map[game->player_y_pos][game->player_x_pos += 1] = 'p';
+        game->map[game->player_y_pos][game->player_x_pos += 1] = 'P';
     }
     return (1);
 }
@@ -78,9 +78,9 @@ int check_next_case(char next_case, t_game *game)
 {
     if (next_case == '1')
         return (0);
-    if (next_case == 'c')
+    if (next_case == 'C')
         game->collectible_count += 1;
-    if (next_case == 'e')
+    if (next_case == 'E')
     {
         if (game->collectible_count == game->collectible_max)
         {

@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/17 14:52:37 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/17 15:34:06 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int main(int ac, char **av)
     //au dessus c'est good//
     
     count_max_collectible(game);
+    if (1 != is_valid_map(game))
+        return (ft_printf("map invalide\n"));
+    
    
     // Danger Zone //
 

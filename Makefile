@@ -31,7 +31,7 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
                 so_long.c)
 
 UTILS			= $(addprefix $(UTILS_DIR), \
-                Handle_Win.c Handle_Imput.c Handle_Map.c)
+                Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c)
 
 LIBFT           = $(LIBFT_DIR)libft.a
 
