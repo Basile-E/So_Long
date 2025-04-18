@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:55:42 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 16:44:49 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/18 11:00:40 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,24 @@ t_game *Init_Textures(t_game *game)
     game->collectible = mlx_xpm_file_to_image(game->mlx_ptr, "Textures/Collectible.xpm",&game->tile_size_x ,&game->tile_size_y);
     game->exit = mlx_xpm_file_to_image(game->mlx_ptr, "Textures/Exit.xpm",&game->tile_size_x ,&game->tile_size_y);
     return (game);
+}
+int check_map_elements(t_game * game)
+{
+    int y = 0;
+    while (y < game->rows)
+    {
+        int x = 0;
+        while (x < game->cols)
+        {
+            if (game->map[y][x] == 'P')
+                (game->player_count)++;
+            else if (game->map[y][x] == 'E')
+                (game->exit_count)++;
+            else if (game->map[y][x] == 'C')
+                (game->coll_count)++;
+            x++;
+        }
+        y++;
+    }
+    return (game->player_count == 1 && game->exit_count > 0 && game->coll_count > 0);
 }

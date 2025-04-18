@@ -33,6 +33,11 @@ typedef struct          s_game
     int     tile_size_y; 
     int     display_size_x;
     int     display_size_y;
+    int     rows;
+    int     cols;
+    int     player_count;
+    int     exit_count;
+    int     coll_count;
 }                       t_game;
 
 
@@ -57,4 +62,5 @@ int count_max_collectible(t_game *game);
 
 //backtracking
 int is_valid_map(t_game *game);
+int check_map_elements(t_game *game);
 #endif

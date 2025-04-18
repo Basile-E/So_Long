@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:15:46 by basile            #+#    #+#             */
-/*   Updated: 2025/04/18 09:40:47 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/18 10:59:10 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // Gere les input envoyer par mlx_key_hook et appel les fonction néscéssaire //
 int handle_imput(int keycode, t_game *game)
 {
-    ft_printf("keycode : %i\n", keycode);
     if (keycode == 65307)
         kill_win(game);
     if ((keycode <= 119) && (keycode >= 97))
@@ -87,6 +86,7 @@ int set_player(t_game * game, int keycode)
 // et autorise ou non le déplacement //
 int check_next_case(char next_case, t_game *game)
 {
+    ft_printf("collectible count : %i\n", game->collectible_count);
     if (next_case == '1')
         return (0);
     if (next_case == 'C')
