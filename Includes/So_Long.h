@@ -15,6 +15,7 @@
 
 typedef struct          s_game
 {
+    int     move_count;
     int     collectible_count;
     int     collectible_max;
     void    *sprite;

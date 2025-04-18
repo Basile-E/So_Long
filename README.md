@@ -4,59 +4,52 @@
 {}
 ||
 
-demander a copilot de faire la verification de la sortie 
-ecris une fonction de 25 lignes maximum qui prend la struct game 
 
-il me faut un fonction qui init la player position et la possition des collectibles
-elle prend la game en input et parse la map en cherchan p, un fois qu'il est dessus il set la player pos idem pour les collectible 
+il manque :
 
-il faudrais que cette fonction change le fichier de la map
-
-dans la fonction handle_imput :
-si keycode == 122
-    move_player(keycode, t_game *game) 
-etc 
-
-move_player(keycode, t_game *game)
-if (keycap == 122 (up))
-    game.map[player_pos_x][player_pos_y + 1] = game.map[player_pos_x][player_pos_y]
-    update player pos
-etc
+[X]l'affichage du nombre de déplacement
+[X] esc pour quiter le jeu 
+[] verifier que la map a au moins : une sortie, un collectible, un stater pos et quelle est bien entourer de murs 
+[X] les messages d'erreurs doivent etre Errror\n suite du message
 
 
-possible probleme avec le fait d'avor une struct diff pour game et mlx je peux les mettre ensemble 
+est-ce que c'est illegal :
 
+d'avoir des leak ?
+que le So Long puisse prendre des map.txt ?
+ 
 # To-Do #
 
 
-[  ]    faire les fonctions de creation des sprites en partant d'un tableau
+[X]    faire les fonctions de creation des sprites en partant d'un tableau
 
-[  ]    si possible : faire la fonction qui envoie les sprites a la fenetre tout les x fois par seconde (on peut choisire ?)
+[X]    si possible : faire la fonction qui envoie les sprites a la fenetre tout les x fois par seconde (on peut choisire ?)
 
 [X]     faire la fonction de parsing de map pour en faire un tableau
 
-[  ]    faire les fonction de gestion des input : ctrl + c, w, a, s, d, close win
+[X]    faire les fonction de gestion des input : esc, w, a, s, d, close win
 
-[  ]    faire une fonction qui lie un keyhook type "w" a une fonction qui modifie la map pour monter le joueur d'une case
+[X]    faire une fonction qui lie un keyhook type "w" a une fonction qui modifie la map pour monter le joueur d'une case
 
-[  ]    trouver des textures qui ont pas les bords chelou, ou comprendre comment m'en servir
+[X]    trouver des textures qui ont pas les bords chelou, ou comprendre comment m'en servir
 
-[  ]    faire un clean du main, ajouter les variables nécessaire a des struct dans le .h et supprimer le rest ou l'envoyer dans ./test/
+[X]    faire un clean du main, ajouter les variables nécessaire a des struct dans le .h et supprimer le rest ou l'envoyer dans ./test/
 
-[  ]    monter les structures nécéssaires
+[X]    monter les structures nécéssaires
 
-[  ]    je peux potentiellement faire un strlen de mon premier appel a gnl sur current line pour avoir la longeure de la fenetre en multipliant par 64
+[X]    je peux potentiellement faire un strlen de mon premier appel a gnl sur current line pour avoir la longeure de la fenetre en multipliant par 64
 
-[  ]    je peux avoir le y en comptant le nombre de ligne dans char ** map
+[X]    je peux avoir le y en comptant le nombre de ligne dans char ** map
 
-[  ]    faire une structure d'affichage qui a ses param
+[X]    faire une structure d'affichage qui a ses param
 
 
 # Fichiers #
 
-Handle_Win.c :  gere les fonctions de la fenettre, kill_win, map_to_img, display_img
-Handle_Imputs : toutes les fonction des imputs
-Handle_Map :    les fonction de parsing de la map, de modification apres input de l'utilisateur   
+[X] Backtracking.c : gere tout le backtracking pour les verifications du mapfile
+[X] Handle_Win.c :  gere les fonctions de la fenettre, kill_win, map_to_img, display_img
+[X] Handle_Imputs : toutes les fonction des imputs
+[X] Handle_Map :    les fonction de parsing de la map, de modification apres input de l'utilisateur   
 
 # For the shit and gigles #
 
@@ -64,6 +57,6 @@ Handle_Map :    les fonction de parsing de la map, de modification apres input d
 
 [X]    faire un effet dégradé de couleur comme le logo homyzsh sur l'ascii art
 
-[  ]    faire un ascii art pour le makefile de la libft
+[ ]   faire un ascii art pour le makefile de la libft
 
 

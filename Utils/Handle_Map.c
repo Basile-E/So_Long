@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/17 16:35:36 by basile           ###   ########.fr       */
+/*   Updated: 2025/04/18 09:49:10 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int open_file(const char *file_name)
     fd = open(file_name, O_RDONLY);
     if (fd == -1)
     {
-        write(2, "Error: Failed to open the map file\n", 35);
+        write(2, "Error\nFailed to open the map file\n", 35);
         return (-1);
     }
 
