@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:50:50 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/04/18 09:48:18 by basile           ###   ########.fr       */
+/*   Updated: 2025/05/21 16:43:46 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 
     game = malloc(sizeof(t_game));
     if (!game || ac != 2)
-        return (ft_printf("Error\nwhile first malloc, boulet\n"));
+        return (ft_printf("Error\nat first line, boulet\n"));
     game->mlx_ptr = mlx_init();
     if (!game->mlx_ptr)
         return(ft_printf("Error\nd'initialisation de la MiniLibX\n")); 
@@ -37,5 +37,5 @@ int main(int ac, char **av)
     mlx_hook(game->win_ptr, DestroyNotify, KeyPressMask, kill_win, game);
     mlx_key_hook(game->win_ptr, handle_imput, game);
     mlx_loop(game->mlx_ptr);
-    return 0;
+    return (0);
 }
