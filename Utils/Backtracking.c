@@ -99,6 +99,8 @@ int is_valid_map(t_game *game)
     game->coll_count = 0;
     game->rows = game->display_size_y / game->tile_size_y;
     game->cols = game->display_size_x / game->tile_size_x;
+    if (game->cols == game->rows)
+        return(0);
     if (!check_map_borders(game->map, game->rows, game->cols))
         return (0);
     if (!check_map_elements(game))

@@ -1,4 +1,4 @@
-NAME			= So_Long
+NAME			= so_long
 
 #		Couleurs		#
 
