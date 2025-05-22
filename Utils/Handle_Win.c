@@ -6,18 +6,55 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:55:42 by basile            #+#    #+#             */
-/*   Updated: 2025/04/18 11:00:40 by basile           ###   ########.fr       */
+/*   Updated: 2025/05/22 23:12:18 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
 
+void    kill_textures(t_game *game)
+{
+    if (game)
+    {
+        if (game->wall)
+            mlx_destroy_image(game->mlx_ptr, game->wall);
+        if (game->ground)
+            mlx_destroy_image(game->mlx_ptr, game->ground);
+        if (game->collectible)
+            mlx_destroy_image(game->mlx_ptr, game->collectible);
+        if (game->player)
+            mlx_destroy_image(game->mlx_ptr, game->player);
+        if (game->exit)
+            mlx_destroy_image(game->mlx_ptr, game->exit);
+    }
+}
+
 // Kill tout les proccessus et s'assure que tout est free
 int kill_win(t_game *game)
 {
-    mlx_destroy_window(game->mlx_ptr,game->win_ptr);// good mais ne termine pas le program
-    free(game->mlx_ptr);
-    exit(0);
+    int i;
+
+    i = 0;
+    if (game)
+    {
+        kill_textures(game);
+        if (game->map)
+        {
+            while (game->map[i])
+            {
+                free(game->map[i]);
+                i++;
+            }
+            free(game->map);
+        }
+        if (game->win_ptr)
+            mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+        if (game->mlx_ptr)
+            mlx_destroy_display(game->mlx_ptr);
+        free(game->mlx_ptr);
+        free(game);
+        exit(0);
+    }
     return (0);
 }
 

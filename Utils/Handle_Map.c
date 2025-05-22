@@ -6,7 +6,7 @@
 /*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/04/18 09:49:10 by basile           ###   ########.fr       */
+/*   Updated: 2025/05/22 21:50:57 by basile           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char **map_extractor(char *map_name)
 {
     int     fd;
     char    *current_line;
+    char    *old_line;
     char    *temp;
     char    **map;
 
@@ -44,10 +45,14 @@ char **map_extractor(char *map_name)
         temp = get_next_line(fd);
         if (!temp)
             break;
+        old_line = current_line;
         current_line = ft_strjoin(current_line, temp);
+        free(old_line);
+        free(temp);
     }
     map = ft_split(current_line, '\n');
-    free(temp);
+    free(current_line);
+    close(fd);
     return (map);
 }
 //  Display la map dans game //
@@ -55,8 +60,6 @@ int map_to_textures(t_game *game)
 {
     int x;
     int y;
-    int print_x;
-    int print_y;
 
     y = 0;
     while (game->map[y])
@@ -64,18 +67,16 @@ int map_to_textures(t_game *game)
         x = 0;
         while(game->map[y][x])
         {
-            print_x = x * game->tile_size_x;
-            print_y = y * game->tile_size_y;
             if (game->map[y][x] == '1')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->wall, (x * 64), (y * 64));
             if (game->map[y][x] == '0')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->ground, (x * 64), (y * 64));
             if (game->map[y][x] == 'P')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player, (x * 64), (y * 64));
             if (game->map[y][x] == 'C')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->collectible, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->collectible, (x * 64), (y * 64));
             if (game->map[y][x] == 'E')
-                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit, (print_x), (print_y));
+                mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->exit, (x * 64), (y * 64));
             x++;
         }
         y++;
