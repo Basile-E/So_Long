@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:40:26 by baecoliv          #+#    #+#             */
 /*   Updated: 2024/09/07 17:07:38 by baecoliv         ###   ########.fr       */

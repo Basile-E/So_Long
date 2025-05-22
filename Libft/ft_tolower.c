@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:55:00 by baecoliv          #+#    #+#             */
 /*   Updated: 2024/09/07 16:55:01 by baecoliv         ###   ########.fr       */

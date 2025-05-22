@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_argument_s.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:04:07 by baecoliv          #+#    #+#             */
 /*   Updated: 2024/12/18 14:04:32 by baecoliv         ###   ########.fr       */

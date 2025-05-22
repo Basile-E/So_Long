@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_ptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:12:59 by baecoliv          #+#    #+#             */
 /*   Updated: 2024/12/14 19:13:00 by baecoliv         ###   ########.fr       */

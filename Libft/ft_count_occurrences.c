@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_occurrences.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:18:18 by baecoliv          #+#    #+#             */
-/*   Updated: 2022/03/09 16:18:51 by baecoliv         ###   ########.fr       */
+/*   Created: 2025/03/09 16:18:18 by baecoliv          #+#    #+#             */
+/*   Updated: 2025/03/09 16:18:51 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

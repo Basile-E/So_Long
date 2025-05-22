@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_decimal_converter_to_hex.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:13:28 by baecoliv          #+#    #+#             */
-/*   Updated: 2022/02/18 21:03:25 by baecoliv         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:03:25 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

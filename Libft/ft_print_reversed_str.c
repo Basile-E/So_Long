@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_reversed_str.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baecoliv <baecoliv@student.42.fr>    +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 03:58:01 by baecoliv          #+#    #+#             */
-/*   Updated: 2022/02/22 03:58:01 by baecoliv         ###   ########.fr       */
+/*   Created: 2025/02/22 03:58:01 by baecoliv          #+#    #+#             */
+/*   Updated: 2025/02/22 03:58:01 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
