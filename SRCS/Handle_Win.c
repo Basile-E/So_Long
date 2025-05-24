@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Handle_Win.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:55:42 by basile            #+#    #+#             */
-/*   Updated: 2025/05/22 23:12:18 by basile           ###   ########.fr       */
+/*   Updated: 2025/05/25 00:42:41 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	kill_win(t_game *game)
 			mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 		free(game);
-		exit(0);
+		exit(1);
 	}
-	return (0);
+	return (1);
 }
 
 // permet de connaitre la taille du display en x et y pour mlx_nez_window
@@ -88,6 +88,30 @@ t_game	*Init_Textures(t_game *game)
 			&game->tile_size_x, &game->tile_size_y);
 	return (game);
 }
+
+// Initialize game struct texture elements to NULL
+t_game	*init_game_textures(t_game *game)
+{
+	if (!game)
+		return (NULL);
+	// Initialize texture pointers
+	game->wall = NULL;
+	game->ground = NULL;
+	game->player = NULL;
+	game->collectible = NULL;
+	game->exit = NULL;
+	// Initialize window and MLX pointers
+	game->win_ptr = NULL;
+	// Initialize counters
+	game->move_count = 0;
+	game->collectible_count = 0;
+	game->collectible_max = 0;
+	// Other game state variables that need initialization
+	game->player_x_pos = 0;
+	game->player_y_pos = 0;
+	return (game);
+}
+
 int	check_map_elements(t_game *game)
 {
 	int	y;
@@ -109,6 +133,8 @@ int	check_map_elements(t_game *game)
 		}
 		y++;
 	}
-	return (game->player_count == 1 && game->exit_count > 0
+	return (game->player_count == 1 && game->exit_count == 1
 		&& game->coll_count > 0);
 }
+
+

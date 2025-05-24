@@ -23,25 +23,26 @@ VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
 
 #		Directories			#
 
-SRCS_DIR		= ./SRC/
-UTILS_DIR		= ./Utils/
+SRCS_DIR		= ./SRCS/
 LIBFT_DIR       = ./Libft/
+INCLS_DIR		= ./Includes
 TEST 			= ./test/main.c
 SRCS 			= $(addprefix $(SRCS_DIR),\
-                so_long.c)
-UTILS			= $(addprefix $(UTILS_DIR), \
-                Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c)
+                so_long.c Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c Utils_Back.c Utils.c)
 LIBFT           = $(LIBFT_DIR)libft.a
+OBJS			= $(SRCS:.c=.o)
+CFLAGS			= -I$(INCLS_DIR)
 
 #		Fonction		#	
 
 all: 		${LIBFT} ${NAME}
 
 ${LIBFT}:
+				make -C ./mlx_linux
 				make -C ${LIBFT_DIR}
 
-${NAME}:        
-				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+${NAME}: ${OBJS}       
+				${CC} ${OBJS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -I./Includes -o ${NAME}
 
 				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
 				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
@@ -51,10 +52,10 @@ ${NAME}:
 				@echo "						$(GREEN)....is now ready to run!$(RESET)"
 
 clean:
-				${REMOVE} ${NAME} Test
+				${REMOVE} */*.o Test
 				@echo "$(TEAL)Cleaning object files and temporary files...$(RESET)"
 
-fclean:
+fclean: clean
 				${REMOVE} ${NAME} Test
 				@echo "$(TEAL)░░      ░░░░      ░░░░░░░░░  ░░░░░░░░░      ░░░   ░░░  ░░░      ░░$(RESET)"
 				@echo "$(CYAN)▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  $(TEAL)▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒  ▒▒▒▒  ▒▒    ▒▒  ▒▒  ▒▒▒▒▒▒▒$(RESET)"
@@ -64,14 +65,14 @@ fclean:
 				@echo "						$(GREEN)....is now clean, See you soon!$(RESET)"
 
 gdb:
-				${CC} ${SRCS} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
+				${CC} ${SRCS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o ${NAME}
 				gdb ./${NAME}
 
 test:  
-				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o Test
+				${CC} ${TEST} ${LIBFT} ${STANDARD_FLAGS} ${MINILIBX_FLAGS} -o Test
 
 gdb_test:		
-				${CC} ${TEST} ${UTILS} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o Test
+				${CC} ${TEST} ${LIBFT} ${STANDARD_FLAGS} ${GDB_FLAGS} ${MINILIBX_FLAGS} -o Test
 				gdb ./Test
 
 run:
