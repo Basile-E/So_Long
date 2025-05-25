@@ -28,7 +28,7 @@ LIBFT_DIR       = ./Libft/
 INCLS_DIR		= ./Includes
 TEST 			= ./test/main.c
 SRCS 			= $(addprefix $(SRCS_DIR),\
-                so_long.c Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c Utils_Back.c Utils.c)
+                so_long.c Handle_Win.c Handle_Imput.c Handle_Map.c Backtracking.c Utils_Back.c Utils.c fleminette.c)
 LIBFT           = $(LIBFT_DIR)libft.a
 OBJS			= $(SRCS:.c=.o)
 CFLAGS			= -I$(INCLS_DIR)

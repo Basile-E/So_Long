@@ -6,7 +6,7 @@
 /*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 00:57:18 by baecoliv          #+#    #+#             */
-/*   Updated: 2025/05/25 00:59:09 by baecoliv         ###   ########.fr       */
+/*   Updated: 2025/05/25 02:09:50 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 char	**copy_map(char **map, int rows)
 {
-    char	**map_copy;
-    int		i;
+	char	**map_copy;
+	int		i;
 
-    map_copy = malloc(sizeof(char *) * (rows + 1));
-    if (!map_copy)
-        return (NULL);
-    i = 0;
-    while (map[i])
-    {
-        map_copy[i] = ft_strdup(map[i]);
-        if (!map_copy[i])
-        {
-            while (--i >= 0)
-                free(map_copy[i]);
-            free(map_copy);
-            return (NULL);
-        }
-        i++;
-    }
-    map_copy[i] = NULL;
-    return (map_copy);
+	map_copy = malloc(sizeof(char *) * (rows + 1));
+	if (!map_copy)
+		return (NULL);
+	i = 0;
+	while (map[i])
+	{
+		map_copy[i] = ft_strdup(map[i]);
+		if (!map_copy[i])
+		{
+			while (--i >= 0)
+				free(map_copy[i]);
+			free(map_copy);
+			return (NULL);
+		}
+		i++;
+	}
+	map_copy[i] = NULL;
+	return (map_copy);
 }
 
 void	free_map(char **map, int rows)
@@ -52,31 +52,30 @@ void	free_map(char **map, int rows)
 
 int	check_all_collectibles(t_game *game)
 {
-    char	**map_copy;
-    int		i;
-    int		j;
-    int		result;
+	char	**map_copy;
+	int		i;
+	int		j;
+	int		result;
 
-    map_copy = copy_map(game->map, game->rows);
-    if (!map_copy)
-        return (0);
-    flood_fill(map_copy, game->player_x_pos, game->player_y_pos, 
-            game->cols, game->rows);
-    result = 1;
-    i = 0;
-    while (i < game->rows)
-    {
-        j = 0;
-        while (j < game->cols)
-        {
-            if (map_copy[i][j] == 'C')
-                result = 0;
-            j++;
-        }
-        i++;
-    }
+	map_copy = copy_map(game->map, game->rows);
+	if (!map_copy)
+		return (0);
+	flood_fill(map_copy, game->player_x_pos, game->player_y_pos, game);
+	result = 1;
+	i = 0;
+	while (i < game->rows)
+	{
+		j = 0;
+		while (j < game->cols)
+		{
+			if (map_copy[i][j] == 'C')
+				result = 0;
+			j++;
+		}
+		i++;
+	}
 	free_map(map_copy, game->rows);
-    return (result);
+	return (result);
 }
 
 // Vérifie si les bords de la map sont bien des '1'

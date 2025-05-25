@@ -50,7 +50,7 @@ int			handle_imput(int keycode, t_game *game);
 int			open_map(const char *file_name);
 char		**map_extractor(char *map_name);
 t_game		*map_to_display(char **map, t_game *game);
-t_game		*Init_Textures(t_game *game);
+t_game		*init_textures(t_game *game);
 t_game		*init_game_textures(t_game *game);
 int			map_to_textures(t_game *game);
 int			move_player(int keycode, t_game *game);
@@ -62,12 +62,15 @@ int			count_max_collectible(t_game *game);
 int			check_map_dimensions(t_game *game);
 int			check_map_elements(t_game *game);
 int			is_ber_file(const char *filename);
+void		fleminette(int keycode, t_game *game);
+int			kill_win(t_game *game);
+void		kill_textures(t_game *game);
 
 // backtracking
 int			is_valid_map(t_game *game);
 char		**copy_map(char **map, int rows);
 void		free_map(char **map, int rows);
-void		flood_fill(char **map, int x, int y, int max_x, int max_y);
+void		flood_fill(char **map, int x, int y, t_game *game);
 int			check_all_collectibles(t_game *game);
 int			check_all_collectibles(t_game *game);
 int			check_map_rectangle(char **map);

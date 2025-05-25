@@ -6,7 +6,7 @@
 /*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:15:46 by basile            #+#    #+#             */
-/*   Updated: 2025/05/24 13:32:50 by baecoliv         ###   ########.fr       */
+/*   Updated: 2025/05/25 01:55:45 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,74 +23,47 @@ int	handle_imput(int keycode, t_game *game)
 }
 
 // En fonction du keycode passer en param par Handle_Imput deplace le joueur,
-	//augmente le compteur de move et display la map //
+// augmente le compteur de move et display la map //
 int	move_player(int keycode, t_game *game)
 {
 	if ((keycode == 119) && (game->map[game->player_y_pos
-			- 1][game->player_x_pos] != '1'))
-	{
-		set_player(game, keycode);
-		map_to_textures(game);
-		game->move_count += 1;
-	}
+				- 1][game->player_x_pos] != '1'))
+		fleminette(keycode, game);
 	if (keycode == 97 && (game->map[game->player_y_pos][game->player_x_pos
 			- 1] != '1'))
-	{
-		set_player(game, keycode);
-		map_to_textures(game);
-		game->move_count += 1;
-	}
+		fleminette(keycode, game);
 	if (keycode == 115 && (game->map[game->player_y_pos
-			+ 1][game->player_x_pos] != '1'))
-	{
-		set_player(game, keycode);
-		map_to_textures(game);
-		game->move_count += 1;
-	}
+				+ 1][game->player_x_pos] != '1'))
+		fleminette(keycode, game);
 	if (keycode == 100 && (game->map[game->player_y_pos][game->player_x_pos
 			+ 1] != '1'))
-	{
-		set_player(game, keycode);
-		map_to_textures(game);
-		game->move_count += 1;
-	}
+		fleminette(keycode, game);
 	return (1);
 }
 
-// potentielement redondant mais set la position du joueur sur la carte et reset l'ancienne possition
-	//
+void	set_p(t_game *game, int y, int x)
+{
+	game->map[y][x] = 'P';
+}
+
 int	set_player(t_game *game, int keycode)
 {
+	game->map[game->player_y_pos][game->player_x_pos] = '0';
 	if ((keycode == 119) && (1 == check_next_case(game->map[game->player_y_pos
-				- 1][game->player_x_pos], game)))
-	{
-		game->map[game->player_y_pos][game->player_x_pos] = '0';
-		game->map[game->player_y_pos -= 1][game->player_x_pos] = 'P';
-		ft_printf("Movement Count : %i\n", game->move_count);
-	}
+					- 1][game->player_x_pos], game)))
+		set_p(game, --game->player_y_pos, game->player_x_pos);
 	if (keycode == 97
 		&& (check_next_case(game->map[game->player_y_pos][game->player_x_pos
 				- 1], game)))
-	{
-		game->map[game->player_y_pos][game->player_x_pos] = '0';
-		game->map[game->player_y_pos][game->player_x_pos -= 1] = 'P';
-		ft_printf("Movement Count : %i\n", game->move_count);
-	}
+		set_p(game, game->player_y_pos, --game->player_x_pos);
 	if (keycode == 115 && (1 == check_next_case(game->map[game->player_y_pos
-				+ 1][game->player_x_pos], game)))
-	{
-		game->map[game->player_y_pos][game->player_x_pos] = '0';
-		game->map[game->player_y_pos += 1][game->player_x_pos] = 'P';
-		ft_printf("Movement Count : %i\n", game->move_count);
-	}
-	if (keycode == 100
-		&& (1 == check_next_case(game->map[game->player_y_pos][game->player_x_pos
+					+ 1][game->player_x_pos], game)))
+		set_p(game, ++game->player_y_pos, game->player_x_pos);
+	if (keycode == 100 && (1
+			== check_next_case(game->map[game->player_y_pos][game->player_x_pos
 				+ 1], game)))
-	{
-		game->map[game->player_y_pos][game->player_x_pos] = '0';
-		game->map[game->player_y_pos][game->player_x_pos += 1] = 'P';
-		ft_printf("Movement Count : %i\n", game->move_count);
-	}
+		set_p(game, game->player_y_pos, ++game->player_x_pos);
+	ft_printf("Movement Count : %i\n", game->move_count);
 	return (1);
 }
 

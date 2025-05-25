@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Handle_Map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: basile <basile@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baecoliv <baecoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:53:25 by basile            #+#    #+#             */
-/*   Updated: 2025/05/22 21:50:57 by basile           ###   ########.fr       */
+/*   Updated: 2025/05/25 02:18:54 by baecoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	open_file(const char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		write(2, "Error\nFailed to open the map file\n", 35);
 		return (-1);
 	}
 	return (fd);
@@ -54,6 +53,7 @@ char	**map_extractor(char *map_name)
 	close(fd);
 	return (map);
 }
+
 //  Display la map dans game //
 int	map_to_textures(t_game *game)
 {
@@ -66,27 +66,14 @@ int	map_to_textures(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (game->map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->wall, (x * 64), (y * 64));
-			if (game->map[y][x] == '0')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->ground, (x * 64), (y * 64));
-			if (game->map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->player, (x * 64), (y * 64));
-			if (game->map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->collectible, (x * 64), (y * 64));
-			if (game->map[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->exit, (x * 64), (y * 64));
+			textinette(game, y, x);
 			x++;
 		}
 		y++;
 	}
 	return (1);
 }
+
 // sert a récupérer la possition du joueur //
 int	map_to_possition(t_game *game)
 {
@@ -110,6 +97,7 @@ int	map_to_possition(t_game *game)
 	}
 	return (1);
 }
+
 // conte le nombre de collectible au debut du jeu //
 int	count_max_collectible(t_game *game)
 {
